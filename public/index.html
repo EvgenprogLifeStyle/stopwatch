@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="stylesheet" href="styles.css" />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <title>My stopwatch</title>
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="stopwatch" id="stopwatch">
+            <div class="stopwatch__header controls" id="stopwatch-controls">
+               <button class="controls__item" id="start">start</button>
+               <button class="controls__item" id="stop">stop</button>
+               <button class="controls__item" id="reset">reset</button>
+               <button class="controls__item" id="circle">circle</button>
+            </div>
+            <div class="stopwatch__body" id="time">00:00:00</div>
+            <div class="stopwatch__subtitle">List circles</div>
+            <ul class="stopwatch__list">
+               <li>123<div class="_del"></div></li>
+            </ul>
+         </div>
+         <h1>stopwatch</h1>
+      </div>
+      <script src="./bandle.js"></script>
+   </body>
+</html>

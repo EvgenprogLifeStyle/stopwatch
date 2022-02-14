@@ -1,0 +1,155 @@
+//<ШРИФТЫ>================================================================================
+//Кириллица &display=swap&subset=cyrillic-ext
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+// @import "fonts";
+//<Шрифт по умолчанию>================================================================================
+
+$fontFamily: "Work Sans", sans-serif;
+
+//</Шрифт по умолчанию>================================================================================
+
+//</ШРИФТЫ>================================================================================
+
+//<ПЕРЕМЕННЫЕ>================================================================================
+
+$md1: 1279.98px;
+$md2: 991.98px;
+$md3: 767.98px;
+$md4: 575.98px;
+
+$c1: #2d3b46;
+//</ПЕРЕМЕННЫЕ>================================================================================
+//<ОБНУЛЕНИЕ>================================================================================
+@import "null.scss";
+//</ОБНУЛЕНИЕ>================================================================================
+
+body {
+   color: #2d3b46;
+   font-size: 16px;
+   font-family: $fontFamily;
+   overflow-x: hidden;
+}
+h1 {
+   font-size: 0;
+}
+.wrapper {
+   width: 100%;
+   min-height: 100%;
+   background: linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+}
+
+//</ОСНОВНОЙ БЛОК>
+
+.stopwatch {
+   max-width: 400px;
+   margin: 0 auto;
+   padding: 100px 0px 0px 0px;
+   @media (max-width: 567px) {
+      padding: 60px 0px 0px 0px;
+   }
+   // .stopwatch__header
+   &__header {
+   }
+
+   // .stopwatch__body
+   &__body {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0px;
+      font-size: 100px;
+      align-self: center;
+      @media (max-width: 567px) {
+         font-size: 70px;
+      }
+   }
+   // .stopwatch__subtitle
+   &__subtitle {
+      text-align: center;
+      font-size: 24px;
+      color: #fff;
+   }
+   // .stopwatch__list
+   &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0px 0px 0px;
+      font-weight: 500;
+      li {
+         align-self: center;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         transition: all 0.3s ease 0s;
+         &:not(:last-child) {
+            margin-bottom: 16px;
+         }
+         @media (any-hover: hover) {
+            &:hover {
+               ._del {
+                  background-color: #2d3b46;
+               }
+            }
+         }
+         ._del {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            margin-left: 10px;
+            background-color: rgba(174, 177, 179, 0.384);
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease 0s;
+            &::before,
+            &::after {
+               content: "";
+               width: 14px;
+               height: 2px;
+               background-color: rgb(221, 221, 221);
+               display: inline-block;
+               position: absolute;
+               left: 50%;
+               top: 50%;
+               transform: translate(-50%, -50%);
+               z-index: 2;
+               border-radius: 10%;
+            }
+            &::after {
+               transform: translate(-50%, -50%) rotate(-45deg);
+            }
+            &::before {
+               transform: translate(-50%, -50%) rotate(45deg);
+            }
+         }
+      }
+   }
+}
+
+.controls {
+   display: flex;
+   @media (max-width: 567px) {
+      flex-wrap: wrap;
+   }
+   // .controls__item
+   &__item {
+      background-color: transparent;
+      flex: 1 1 auto;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 500;
+      transition: color 0.3s ease 0s;
+      margin-bottom: 20px;
+      @media (any-hover: hover) {
+         &:hover {
+            color: #2d3b46;
+         }
+      }
+      @media (max-width: 567px) {
+         font-size: 20px;
+      }
+      &._active {
+         color: #2d3b46;
+      }
+   }
+}
