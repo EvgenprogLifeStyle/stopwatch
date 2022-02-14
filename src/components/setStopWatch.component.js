@@ -47,8 +47,11 @@ export class controlStopwatch extends Component {
       if (this.$time.textContent != "00:00:00") {
          let list = JSON.parse(this.local());
          const arrTime = this.$time.textContent;
-
-         list != "" ? list.push({ time: arrTime }) : (list = [{ time: arrTime }]);
+         if (list) {
+            list.push({ time: arrTime });
+         } else {
+            list = [{ time: arrTime }];
+         }
          localStorage.setItem("stopwatchList", JSON.stringify(list));
 
          this.up();
@@ -59,19 +62,24 @@ export class controlStopwatch extends Component {
 
    // Обновление списка
    up() {
-      let dataLocal = JSON.parse(this.local());
       let listTime = document.querySelector(".stopwatch__list");
-      if (dataLocal.length == 0 || dataLocal.length == "") {
-         listTime.innerHTML = "The list is empty";
-      } else {
-         listTime.innerHTML = "";
+      if (this.local()) {
+         let dataLocal = JSON.parse(this.local());
 
-         let number = 0;
-         dataLocal.forEach((item) => {
-            number++;
-            let item1 = `<li data-id="${number - 1}">${number} Circle: ${item.time}<div class="_del"></div></li>`;
-            listTime.insertAdjacentHTML("afterbegin", item1);
-         });
+         if (dataLocal.length == 0 || dataLocal.length == "") {
+            listTime.innerHTML = "The list is empty";
+         } else {
+            listTime.innerHTML = "";
+
+            let number = 0;
+            dataLocal.forEach((item) => {
+               number++;
+               let item1 = `<li data-id="${number - 1}">${number} Circle: ${item.time}<div class="_del"></div></li>`;
+               listTime.insertAdjacentHTML("afterbegin", item1);
+            });
+         }
+      } else {
+         listTime.innerHTML = "The list is empty";
       }
    }
 
